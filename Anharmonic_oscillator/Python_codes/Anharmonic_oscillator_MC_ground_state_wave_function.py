@@ -57,7 +57,7 @@ def ground_state(path0,h,filename):
     path = path0
 
     for i in range(100):
-        path, h = MC_sweep(path,Ntau,h,V_Harm)
+        path, h = MC_sweep(path,Ntau,h,V_Anharm)
 
     thermalized_path = path
 
@@ -67,7 +67,7 @@ def ground_state(path0,h,filename):
         h = 0.1
         path = thermalized_path
         for j in range(Nsep):
-            path, h = MC_sweep(path,Ntau,h,V_Harm)
+            path, h = MC_sweep(path,Ntau,h,V_Anharm)
         path_arr.append(list(path))
 
 
@@ -82,7 +82,7 @@ def ground_state(path0,h,filename):
     plt.plot(x,psi0)
     plt.xlabel("x")
     plt.ylabel(r"$|\psi_0|^2$")
-    plt.savefig("Harmonic_oscillator_ground_state_1000_runs.png",dpi=400)
+    plt.savefig(filename+".png",dpi=400)
     plt.show()
     plt.close()
 
@@ -97,8 +97,8 @@ m = 1 * dt
 omega = 1 * dt 
 idrate = 0.8
 time_arr = np.arange(0,Ntau,1)
-N = 2000
-Nsep = 100
+N = 200
+Nsep = 10
 #path0 = [random.random() for i in 1:Ntau]
 path0 = np.zeros(Ntau)
 
@@ -113,8 +113,8 @@ m = 1 * dt
 omega = 1 * dt 
 time_arr = np.arange(0,Ntau,1)
 path0 = np.zeros(Ntau)
-N = 5000
-Nsep = 100
+N = 500
+Nsep = 10
 ground_state(path0,h,"Ground_state_Harmonic_oscillator_b")
 
 #%%
@@ -127,8 +127,8 @@ m = 1 * dt
 omega = 1 * dt 
 time_arr = np.arange(0,Ntau,1)
 path0 = np.zeros(Ntau)
-N = 2000
-Nsep = 100
+N = 200
+Nsep = 10
 ground_state(path0,h,"Ground_state_Anharmonic_oscillator_c")
 
 #%%
@@ -141,6 +141,8 @@ m = 1 * dt
 omega = 1 * dt 
 time_arr = np.arange(0,Ntau,1)
 path0 = np.zeros(Ntau)
-N = 5000
-Nsep = 100
+N = 500
+Nsep = 10
 ground_state(path0,h,"Ground_state_Anharmonic_oscillator_d")
+
+# %%

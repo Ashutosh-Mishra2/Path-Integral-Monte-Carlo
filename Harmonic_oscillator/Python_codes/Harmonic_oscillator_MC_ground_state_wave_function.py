@@ -73,7 +73,7 @@ for i in range(100):
 thermalized_path = path
 #%%
 
-N = 10000
+N = 1000
 Nsep = 12
 path_arr = []
 

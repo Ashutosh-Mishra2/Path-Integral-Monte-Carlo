@@ -19,14 +19,14 @@ def V_Harm(lamda,x,m,omega):
     return 0.5* m* (omega**2) * (x**2)
 
 
-def Action(V,x1,x2,x,m,omega):
-    S = 0.5 * m * ( (x1 - x)**2 + (x2 - x)**2) + V(lamda,x)  
+def Action(V,x1,x2,x,m,omega,lamda):
+    S = 0.5 * m * ( (x1 - x)**2 + (x2 - x)**2) + V(lamda,x,m,omega)  
     return S  
 
 def Action_total(V,path,m,omega,lamda,Ntau):
     S = 0
     for i in range(Ntau):
-        S += 0.5*m*( (path[(i + 1)%Ntau] - path[i] )**2 ) + V(lamda,path[i])
+        S += 0.5*m*( (path[(i + 1)%Ntau] - path[i] )**2 ) + V(lamda,path[i],m,omega)
     return S
 
 
@@ -107,7 +107,7 @@ def generate_paths(path0,h,N,Ntau,m,omega,lamda,dt):
         h = 0.1
         path = thermalized_path
         for j in range(Nsep):
-            path, h = MC_sweep(path,Ntau,h,V_Harm)
+            path, h = MC_sweep(path,Ntau,h,V_Harm,m,omega,lamda)
         path_arr.append(list(path))
     
     return path_arr
@@ -130,10 +130,10 @@ def G2(n_arr,dt,lamda,N,h):
 
 # %%
 dt = 0.2 
-N = 500
+N = 50
 h = 0.1
 n_arr = [1,2,3,4,5,6,7,8,9,10]
-Nsep = 50
+Nsep = 5
 idrate = 0.8
 
 lamda = 0 
@@ -164,3 +164,6 @@ plt.ylabel(r"$G_{2,\infty}(n)$")
 plt.savefig("G2_plot.svg")
 plt.show()
 plt.close()
+# %%
+
+# %%

@@ -77,7 +77,7 @@ for i in range(100):
 thermalized_path = path
 #%%
 
-N = 10000
+N = 1000
 Nsep = 50
 path_arr = []
 
@@ -117,12 +117,13 @@ def expectation_plot(f,path_arr,filename,window_size,y_label,expt):
 
     x_avg = moving_average(x_array,window_size)
 
-    plt.scatter(range(window_size,N), x_array[window_size:],label = "MC")
-    plt.plot(range(window_size-1,N), x_avg, label = "Moving average("+str(window_size)+")")
+    plt.scatter(range(window_size,N), x_array[window_size:],label = "MC",s=1,color = "black")
+    plt.plot(range(window_size-1,N), x_avg, label = "Moving average("+str(window_size)+")",color = "red")
     plt.xlabel("Monte-Carlo Sweep")
     plt.ylabel(y_label)
     plt.title(y_label+" = "+str(expt))
     plt.savefig(filename+".png",dpi = 400)
+    plt.legend()
     plt.show()
     plt.close()
 #%%
@@ -135,7 +136,7 @@ expt_x = expectation_value(Xop,path_arr)
 print("Expectation value ⟨X⟩ =  ", expt_x)
 
 y_label = r"$\langle \hat{X} \rangle$"
-window_size = 1000
+window_size = 100
 
 expectation_plot(Xop,path_arr,"Anarmonic_oscillator_expectation_of_X",window_size,y_label,expt_x)
 
@@ -149,7 +150,7 @@ expt_x2 = expectation_value(X2op,path_arr)
 print("Expectation value ⟨X²⟩ =  ", expt_x2)
 
 y_label = r"$\langle \hat{X}**2 \rangle$"
-window_size = 1000
+window_size = 100
 
 expectation_plot(X2op,path_arr,"Anarmonic_oscillator_expectation_of_X2",window_size,y_label,expt_x2)
 
@@ -163,8 +164,8 @@ def X3op(x):
 expt_x3 = expectation_value(X3op,path_arr)
 print("Expectation value ⟨X³⟩ =  ", expt_x3)
 
-y_label = r"$\langle \hat{X}**3 \rangle$"
-window_size = 1000
+y_label = r"$\langle \hat{X}^3 \rangle$"
+window_size = 100
 
 expectation_plot(X3op,path_arr,"Anarmonic_oscillator_expectation_of_X3",window_size,y_label,expt_x3)
 
@@ -177,7 +178,9 @@ def X4op(x):
 expt_x4 = expectation_value(X4op,path_arr)
 print("Expectation value ⟨X⁴⟩ =  ", expt_x4)
 
-y_label = r"$\langle \hat{X}**4 \rangle$"
-window_size = 1000
+y_label = r"$\langle \hat{X}^4 \rangle$"
+window_size = 100
 
 expectation_plot(X4op,path_arr,"Anarmonic_oscillator_expectation_of_X4",window_size,y_label,expt_x4)
+
+# %%

@@ -38,3 +38,4 @@ plt.ylabel("V(x)")
 plt.savefig("potential_plot.svg")
 plt.show()
 plt.close()
+# %%
