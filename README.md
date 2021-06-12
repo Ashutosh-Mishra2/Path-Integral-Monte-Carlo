@@ -6,6 +6,7 @@ The following are the required packages for Python:
 * Matplotlib
 * random
 * time
+
 Also, these are written with Python 3.8.5. Thus it is recommended to use this or higher version to run.
 
 The Julia codes are written with Julia version 1.5.0. The following packages in Julia are used:
