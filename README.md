@@ -16,8 +16,8 @@ The Julia codes are written with Julia version 1.5.0. The following packages in 
 * LaTeXStrings
 
 These codes use multithreading to do computations quickly, thus use the following command to increase the number of threads used:  
-`export JULIA_NUM_THREADS=4`  
-for 4 threads. This command is for Linux.  
+`export JULIA_NUM_THREADS=4` 
+for 4 threads. This command is for bash shell, and remains active till the terminal window is closed.  
 To check the number of threads in Julia, one can print:  
 `Threads.nthreads()`  
 
